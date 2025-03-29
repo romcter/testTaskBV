@@ -20,10 +20,6 @@ public class DataStoringService {
 //    @CacheEvict(value = "nonSettledEvents", allEntries = true)
     public FullSportEventDTO createSportEvent(FullSportEventDTO sportEventDTO) {
         var mappedSE = sportEventMapper.toFullSportEventDTOInverse(sportEventDTO);
-        mappedSE.getMarkets().forEach(it -> {
-            it.setSportEvent(mappedSE);
-            it.getOutcomes().forEach(outcome -> outcome.setMarket(it));
-        });
         var savedEvent = sportEventRepository.save(mappedSE);
         dataRetrievingService.evictNonSettledEventsCache();
         return sportEventMapper.toFullSportEventDTO(savedEvent);

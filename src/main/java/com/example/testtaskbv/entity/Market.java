@@ -20,7 +20,7 @@ public class Market {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private MarketStatus status; // Must exist for the mapper to work
+    private MarketStatus status;
 
     @Column(nullable = false)
     private boolean settled;
