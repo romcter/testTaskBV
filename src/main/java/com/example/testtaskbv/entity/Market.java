@@ -2,14 +2,18 @@ package com.example.testtaskbv.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.envers.Audited;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
 @Table(name = "markets")
-@Data
-public class Market {
+@Audited
+public class Market extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

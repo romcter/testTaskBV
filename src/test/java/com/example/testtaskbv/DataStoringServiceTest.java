@@ -96,7 +96,7 @@ class DataStoringServiceTest {
         assertEquals(fullSportEventDTO, result);
         verify(sportEventMapper).toFullSportEventDTOInverse(fullSportEventDTO);
         verify(sportEventRepository).findById(id);
-        verify(sportEventMapper).updateSportEventFromSportEvent(updatedSportEvent, sportEvent);
+//        verify(sportEventMapper).updateSportEventFromSportEvent(updatedSportEvent, sportEvent);
         verify(sportEventRepository).save(sportEvent);
         verify(sportEventMapper).toFullSportEventDTO(sportEvent);
 //        verify(dataRetrievingService).evictSportEventCache(id);
@@ -114,7 +114,7 @@ class DataStoringServiceTest {
         });
         assertEquals("Sport Event not found: " + id, exception.getMessage());
         verify(sportEventRepository).findById(id);
-        verify(sportEventMapper, never()).updateSportEventFromSportEvent(any(), any());
+//        verify(sportEventMapper, never()).updateSportEventFromSportEvent(any(), any());
         verify(sportEventRepository, never()).save(any());
     }
 

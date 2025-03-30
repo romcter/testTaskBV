@@ -2,11 +2,15 @@ package com.example.testtaskbv.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.envers.Audited;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "outcomes")
 @Data
-public class Outcome {
+@Audited
+public class Outcome extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

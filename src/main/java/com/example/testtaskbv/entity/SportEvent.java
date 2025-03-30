@@ -2,14 +2,21 @@ package com.example.testtaskbv.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.envers.Audited;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "sport_events")
-public class SportEvent {
+@EntityListeners(AuditingEntityListener.class)
+@Audited
+public class SportEvent extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
