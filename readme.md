@@ -8,7 +8,7 @@ I’m unclear about the requirement: `Design the services with the assumption th
 docker-compose up
 ```
 
-[Swagger](http://localhost:8080/swagger-ui/index.html#/)
+[Swagger](http://localhost:8080/swagger-ui/index.html#/) Created 2 extra endpoint for visualize cache state
 ![swagger_view.png](media/swagger_view.png)
 
 [Full health](http://localhost:8080/actuator/health)

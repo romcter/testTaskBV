@@ -29,9 +29,6 @@ class DataStoringServiceTest {
     @Mock
     private SportEventMapper sportEventMapper;
 
-    @Mock
-    private DataRetrievingService dataRetrievingService;
-
     @InjectMocks
     private DataStoringService dataStoringService;
 
@@ -76,7 +73,6 @@ class DataStoringServiceTest {
         verify(sportEventMapper).toFullSportEventDTOInverse(fullSportEventDTO);
         verify(sportEventRepository).save(sportEvent);
         verify(sportEventMapper).toFullSportEventDTO(sportEvent);
-//        verify(dataRetrievingService).evictNonSettledEventsCache();
     }
 
     @Test
@@ -96,11 +92,8 @@ class DataStoringServiceTest {
         assertEquals(fullSportEventDTO, result);
         verify(sportEventMapper).toFullSportEventDTOInverse(fullSportEventDTO);
         verify(sportEventRepository).findById(id);
-//        verify(sportEventMapper).updateSportEventFromSportEvent(updatedSportEvent, sportEvent);
         verify(sportEventRepository).save(sportEvent);
         verify(sportEventMapper).toFullSportEventDTO(sportEvent);
-//        verify(dataRetrievingService).evictSportEventCache(id);
-//        verify(dataRetrievingService).evictNonSettledEventsCache();
     }
 
     @Test
@@ -114,7 +107,6 @@ class DataStoringServiceTest {
         });
         assertEquals("Sport Event not found: " + id, exception.getMessage());
         verify(sportEventRepository).findById(id);
-//        verify(sportEventMapper, never()).updateSportEventFromSportEvent(any(), any());
         verify(sportEventRepository, never()).save(any());
     }
 
@@ -127,8 +119,6 @@ class DataStoringServiceTest {
 
         verify(sportEventRepository).findById(id);
         verify(sportEventRepository).delete(sportEvent);
-//        verify(dataRetrievingService).evictSportEventCache(id);
-//        verify(dataRetrievingService).evictNonSettledEventsCache();
     }
 
     @Test
