@@ -10,4 +10,5 @@ import java.util.List;
 public interface SportEventRepository extends JpaRepository<SportEvent, Long> {
     List<SportEvent> findBySettledFalseAndSportOrderByStartTime(String sport);
     List<SportEvent> findBySettledFalseOrderByStartTime();
+    Long countBySettledFalse();
 }
