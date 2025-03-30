@@ -6,7 +6,6 @@ import com.example.testtaskbv.mapper.SportEventMapper;
 import com.example.testtaskbv.repository.SportEventRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -39,19 +38,4 @@ public class DataRetrievingService {
                 .orElseThrow(() -> new IllegalArgumentException("Sport Event not found: " + id));
         return sportEventMapper.toFullSportEventDTO(event);
     }
-
-    @CacheEvict(value = "nonSettledEvents", allEntries = true)
-    public void evictNonSettledEventsCache() {
-        log.info("Evicting nonSettledEvents cache");
-    }
-
-    @CacheEvict(value = "sportEvent", key = "#id")
-    public void evictSportEventCache(Long id) {
-        log.info("Evicting sportEvent cache for ID: {}", id);
-    }
-//
-//    @CacheEvict(value = {"nonSettledEvents", "sportEvent"}, allEntries = true)
-//    public void evictAllCaches() {
-//        log.info("Evicting all caches");
-//    }
 }
