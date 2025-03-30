@@ -14,7 +14,9 @@ docker-compose up
 [Full health](http://localhost:8080/actuator/health)
 [Liveness probe](http://localhost:8080/actuator/health/liveness)
 [Readiness probe](http://localhost:8080/actuator/health/readiness)
+![add_health_view.png](media/add_health_view.png)
 
-### Auditing and versioning ![auditing.png](media/auditing.png)
+Auditing and versioning 
+![auditing.png](media/auditing.png)
 
 
